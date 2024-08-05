@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #175034;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.home {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    transition: background-color .3s, color .3s;
+}
+
+.register {
+    color: #fff;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    transition: background-color .3s, color .3s;
+}
+
+.login {
+    color: #fff;
+    text-decoration: none;
+    padding: .5rem 1rem;
+    border-radius: 4px;
+    transition: background-color .3s, color .3s;
+}
