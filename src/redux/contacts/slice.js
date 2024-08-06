@@ -3,7 +3,7 @@ import { fetchContacts, addContact, deleteContact } from './operations';
 
 const initialState = {
     items: [],
-    loading: false,
+    isLoading: false,
     error: null,
 };
 
@@ -13,14 +13,15 @@ const contactsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchContacts.pending, state => {
-                state.loading = true;
+                state.isLoading = true;
+                state.error = null;
             })
             .addCase(fetchContacts.fulfilled, (state, action) => {
-                state.loading = false;
                 state.items = action.payload;
+                state.isLoading = false;
             })
             .addCase(fetchContacts.rejected, (state, action) => {
-                state.loading = false;
+                state.isLoading = false;
                 state.error = action.payload;
             })
             .addCase(addContact.fulfilled, (state, action) => {

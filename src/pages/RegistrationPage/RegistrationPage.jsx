@@ -1,12 +1,11 @@
-import React from 'react';
-import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import PageTitle from "../../components/PageTitle/PageTitle";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
-const RegistrationPage = () => {
+export default function RegisterPage() {
     return (
         <div>
-            <RegisterForm />
+            <PageTitle>Register your account</PageTitle>
+            <RegistrationForm />
         </div>
     );
-};
-
-export default RegistrationPage;
+}

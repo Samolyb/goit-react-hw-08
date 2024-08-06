@@ -1,9 +1,8 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from '../../redux/auth/operations';
-import css from '../RegisterForm/RegisterForm.module.css';
+import css from './RegistrationForm.module.css';
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -11,7 +10,7 @@ const validationSchema = Yup.object().shape({
     password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
 });
 
-const RegisterForm = () => {
+const RegistrationForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (values, { resetForm }) => {
@@ -23,33 +22,23 @@ const RegisterForm = () => {
         <Formik
             initialValues={{ name: '', email: '', password: '' }}
             validationSchema={validationSchema}
-            onSubmit={(values, { resetForm }) => {
-                dispatch(register(values))
-                    .then(() => {
-                        console.log('Registration success');
-                    })
-                    .catch((error) => {
-                        console.error('Registration error', error);
-                    });
-
-                resetForm();
-            }}
+            onSubmit={handleSubmit}
         >
             <Form className={css.form} autoComplete="off">
                 <label className={css.label}>
                     Username
                     <Field type="text" name="name" className={css.input} />
-                    <ErrorMessage name="name" component="div" className={css.error} />
+                    <ErrorMessage name="name" component="p" className={css.error} />
                 </label>
                 <label className={css.label}>
                     Email
                     <Field type="email" name="email" className={css.input} />
-                    <ErrorMessage name="email" component="div" className={css.error} />
+                    <ErrorMessage name="email" component="p" className={css.error} />
                 </label>
                 <label className={css.label}>
                     Password
                     <Field type="password" name="password" className={css.input} />
-                    <ErrorMessage name="password" component="div" className={css.error} />
+                    <ErrorMessage name="password" component="p" className={css.error} />
                 </label>
                 <button type="submit" className={css.button}>Register</button>
             </Form>
@@ -57,4 +46,4 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default RegistrationForm;

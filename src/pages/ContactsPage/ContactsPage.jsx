@@ -1,11 +1,15 @@
 import React from 'react';
-import Contacts from '../../components/Contact/Contact';
+import ContactForm from '../../components/ContactForm/ContactForm';
+import ContactList from '../../components/ContactList/ContactList';
+import Filter from '../../components/Filter/Filter';
 
 const ContactsPage = () => {
     return (
         <div>
             <h1>Contacts</h1>
-            <Contacts />
+            <ContactForm />
+            <Filter />
+            <ContactList />
         </div>
     );
 };

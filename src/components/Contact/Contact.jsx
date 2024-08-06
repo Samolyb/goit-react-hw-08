@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/operations';
 import { FaPhoneAlt, FaUser, FaUserMinus } from 'react-icons/fa';

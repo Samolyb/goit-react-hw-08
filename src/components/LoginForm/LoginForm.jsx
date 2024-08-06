@@ -1,9 +1,8 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { login } from '../../redux/auth/operations';
-import css from '../LoginForm/LoginForm.module.css';
+import { logIn } from '../../redux/auth/operations';
+import css from './LoginForm.module.css';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -14,7 +13,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (values, { resetForm }) => {
-        dispatch(login(values));
+        dispatch(logIn(values));
         resetForm();
     };
 
