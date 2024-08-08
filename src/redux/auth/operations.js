@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-hot-toast';
 
 const baseURL = 'https://connections-api.goit.global/';
 
@@ -15,39 +16,39 @@ export const register = createAsyncThunk(
     'auth/register',
     async (credentials, thunkAPI) => {
         try {
-            const response = await axios.post(`${baseURL}/register`, credentials);
-            setAuthHeader(response.data.token);
-            return response.data;
+            const res = await axios.post('/users/signup', credentials);
+            setAuthHeader(res.data.token);
+            return res.data;
         } catch (error) {
+            toast.error('Registration failed. Please try again.');
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
+
 
 export const logIn = createAsyncThunk(
-    'auth/logIn',
+    'auth/login',
     async (credentials, thunkAPI) => {
         try {
-            const response = await axios.post(`${baseURL}/logIn`, credentials);
-            setAuthHeader(response.data.token);
-            return response.data;
+            const res = await axios.post('/users/login', credentials);
+            setAuthHeader(res.data.token);
+            return res.data;
         } catch (error) {
+            toast.error('Log In failed. Please try again.');
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
 
-export const logOut = createAsyncThunk(
-    'auth/logOut',
-    async (_, thunkAPI) => {
-        try {
-            await axios.post(`${baseURL}/logOut`);
-            clearAuthHeader();
-        } catch (error) {
-            return thunkAPI.rejectWithValue(error.message);
-        }
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+    try {
+        await axios.post('/users/logout');
+        clearAuthHeader();
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
     }
-);
+});
 
 export const refreshUser = createAsyncThunk(
     'auth/refreshUser',
