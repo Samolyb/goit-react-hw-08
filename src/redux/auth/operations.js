@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
-const baseURL = 'https://connections-api.goit.global/';
+axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
 const setAuthHeader = (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
