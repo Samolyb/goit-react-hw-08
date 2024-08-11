@@ -6,17 +6,12 @@ const initialState = {
     items: [],
     isLoading: false,
     error: null,
-    filter: '',
 };
 
 const contactsSlice = createSlice({
     name: 'contacts',
     initialState,
-    reducers: {
-        setFilter(state, action) {
-            state.filter = action.payload;
-        },
-    },
+
     extraReducers: builder => {
         builder
             .addCase(fetchContacts.pending, (state) => {
